@@ -21,6 +21,11 @@ public class AnimalIO
         System.out.println("How many mice has this cat killed?");
         Integer victims = this.getNumericInput();
 
+        Cat returnCat = new Cat(victims, name);
+
+        // System.out.println("Congrats! You generated this cat: ");
+        // System.out.println(returnCat);
+
         return new Cat(victims, name);
     }
 
@@ -28,7 +33,11 @@ public class AnimalIO
     {
         System.out.println("You're building a dog... What is the dog's name?");
         String name = this.getStringInputFromSysIn();
-        return new Dog(true, name);
+
+        System.out.println("True or false, this dog is friendly:");
+        Boolean kind = this.getBoolInputFromSysIn();
+
+        return new Dog(kind, name);
     }
 
     public Student genStudent()
@@ -48,7 +57,9 @@ public class AnimalIO
 
             returnString = br.readLine();
 
-            isr.close();
+            // Why did closing isr force my other IO function to
+            // go freaky AF?
+            // isr.close();
         }
         catch (IOException e)
         {
@@ -61,23 +72,49 @@ public class AnimalIO
 
     private Integer getNumericInput()
     {
-        Integer intToReturn;
+        Scanner console = new Scanner(System.in);
+        Scanner lineTokenizer;
+        int lineNum = 0;
 
-        Scanner sc = new Scanner(System.in);
+        while (console.hasNextLine()) {
+            lineTokenizer = new Scanner(console.nextLine());
+            lineNum++;
 
-        String lineOfInput = sc.next();
+            if(!(lineTokenizer.hasNextInt()))
+            {
+                System.out.println("You need to enter an integer...");
+            }
 
-        while (sc.hasNextLine())
-        {
-            System.out.println("got sumthin");
+            if(lineTokenizer.hasNextInt())
+            {
+                return lineTokenizer.nextInt();
+            }
         }
 
-        String someString = "Sup yall?";
+        return lineNum;
+    }
 
-        int i = sc.nextInt();
+    private Boolean getBoolInputFromSysIn()
+    {
+        Scanner console = new Scanner(System.in);
+        Scanner lineTokenizer;
+        int lineNum = 0;
 
-        intToReturn = i;
+        while (console.hasNextLine()) {
+            lineTokenizer = new Scanner(console.nextLine());
+            lineNum++;
 
-        return intToReturn;
+            if(!(lineTokenizer.hasNextBoolean()))
+            {
+                System.out.println("You need to enter 'true' or 'false'");
+            }
+
+            if(lineTokenizer.hasNextBoolean())
+            {
+                return lineTokenizer.nextBoolean();
+            }
+        }
+
+        return false;
     }
 }
