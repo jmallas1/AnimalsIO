@@ -8,13 +8,19 @@ public class Main {
     private final static FileInput inFile = new FileInput("animals.txt");
     public static void main(String[] args) {
 
+        AnimalIO aio = new AnimalIO();
+
         ArrayList<Talkable> zoo = new ArrayList<>();
 
-        //Lines to Replace
+        zoo.add(aio.genCat());
+        zoo.add(aio.genDog());
+        zoo.add(aio.genStudent());
+
+        /* Lines to Replace
         zoo.add(new Dog(true, "Pete"));
         zoo.add(new Cat(9, "Anne Belly"));
         zoo.add(new Student(19, "Joe John Johnson"));
-        //End Lines to Replace
+        End Lines to Replace */
 
         for (Talkable thing: zoo) {
             printOut(thing);
