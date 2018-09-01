@@ -65,6 +65,15 @@ public class AnimalIO
 
         Scanner sc = new Scanner(System.in);
 
+        String lineOfInput = sc.next();
+
+        while (sc.hasNextLine())
+        {
+            System.out.println("got sumthin");
+        }
+
+        String someString = "Sup yall?";
+
         int i = sc.nextInt();
 
         intToReturn = i;
