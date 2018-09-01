@@ -5,15 +5,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
-public class AnimalIO
+class AnimalIO
 {
     private String thingName;
     private InputStreamReader isr;
     private BufferedReader br;
 
-    public AnimalIO() { }
+    AnimalIO() { }
 
-    public Cat genCat()
+    Cat genCat()
     {
         System.out.println("You're building a cat... What is the cat's name?");
         String name = this.getStringInputFromSysIn();
@@ -29,7 +29,7 @@ public class AnimalIO
         return new Cat(victims, name);
     }
 
-    public Dog genDog()
+    Dog genDog()
     {
         System.out.println("You're building a dog... What is the dog's name?");
         String name = this.getStringInputFromSysIn();
@@ -40,11 +40,15 @@ public class AnimalIO
         return new Dog(kind, name);
     }
 
-    public Student genStudent()
+    Student genStudent()
     {
         System.out.println("You're building a student... What is the student's name?");
         String name = this.getStringInputFromSysIn();
-        return new Student(42, name);
+
+        System.out.println("How old is this student?");
+        Integer age = this.getNumericInput();
+
+        return new Student(age, name);
     }
 
     private String getStringInputFromSysIn()
