@@ -1,19 +1,17 @@
 package org.jrm;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Scanner;
 
-class AnimalIO
+public class AnimalIO
 {
     private String thingName;
     private InputStreamReader isr;
     private BufferedReader br;
 
-    AnimalIO() { }
+    public AnimalIO() { }
 
-    Cat genCat()
+    public Cat genCat()
     {
         System.out.println("You're building a cat... What is the cat's name?");
         String name = this.getStringInputFromSysIn();
@@ -29,7 +27,39 @@ class AnimalIO
         return new Cat(victims, name);
     }
 
-    Dog genDog()
+    public Cat genCat(String pName, String pVictims)
+    {
+        String inData;
+        inData = pName;
+        String rName;
+        Integer rVictims;
+
+        InputStream stdin = System.in;
+        try
+        {
+            System.setIn(new ByteArrayInputStream(inData.getBytes()));
+            rName = this.getStringInputFromSysIn();
+        }
+        finally
+        {
+            System.setIn(System.in);
+        }
+
+        inData = pVictims;
+        try
+        {
+            System.setIn(new ByteArrayInputStream(inData.getBytes()));
+            rVictims = this.getNumericInput();
+        }
+        finally
+        {
+            System.setIn(System.in);
+        }
+
+        return new Cat(rVictims, rName);
+    }
+
+    public Dog genDog()
     {
         System.out.println("You're building a dog... What is the dog's name?");
         String name = this.getStringInputFromSysIn();
@@ -40,7 +70,7 @@ class AnimalIO
         return new Dog(kind, name);
     }
 
-    Student genStudent()
+    public Student genStudent()
     {
         System.out.println("You're building a student... What is the student's name?");
         String name = this.getStringInputFromSysIn();
