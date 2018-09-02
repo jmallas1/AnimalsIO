@@ -11,7 +11,7 @@ public class AnimalIO
 
     public AnimalIO() { }
 
-    public Cat genCat()
+    Cat genCat()
     {
         System.out.println("You're building a cat... What is the cat's name?");
         String name = this.getStringInputFromSysIn();
@@ -30,11 +30,11 @@ public class AnimalIO
     public Cat genCat(String pName, String pVictims)
     {
         String inData;
-        inData = pName;
         String rName;
         Integer rVictims;
+        InputStream stdinHolder = System.in;
 
-        InputStream stdin = System.in;
+        inData = pName;
         try
         {
             System.setIn(new ByteArrayInputStream(inData.getBytes()));
@@ -42,7 +42,7 @@ public class AnimalIO
         }
         finally
         {
-            System.setIn(System.in);
+            System.setIn(stdinHolder);
         }
 
         inData = pVictims;
@@ -51,15 +51,12 @@ public class AnimalIO
             System.setIn(new ByteArrayInputStream(inData.getBytes()));
             rVictims = this.getNumericInput();
         }
-        finally
-        {
-            System.setIn(System.in);
-        }
+        finally { System.setIn(stdinHolder); }
 
         return new Cat(rVictims, rName);
     }
 
-    public Dog genDog()
+    Dog genDog()
     {
         System.out.println("You're building a dog... What is the dog's name?");
         String name = this.getStringInputFromSysIn();
@@ -70,7 +67,33 @@ public class AnimalIO
         return new Dog(kind, name);
     }
 
-    public Student genStudent()
+    public Dog genDog(String pName, String pKind)
+    {
+        String inData;
+        String rName;
+        Boolean rKind;
+        InputStream stdinHolder = System.in;
+
+        inData = pName;
+        try
+        {
+            System.setIn(new ByteArrayInputStream(inData.getBytes()));
+            rName = this.getStringInputFromSysIn();
+        }
+        finally { System.setIn(stdinHolder); }
+
+        inData = pKind;
+        try
+        {
+            System.setIn(new ByteArrayInputStream(inData.getBytes()));
+            rKind = this.getBoolInputFromSysIn();
+        }
+        finally { System.setIn(stdinHolder); }
+
+        return new Dog(rKind, rName);
+    }
+
+    Student genStudent()
     {
         System.out.println("You're building a student... What is the student's name?");
         String name = this.getStringInputFromSysIn();
@@ -79,6 +102,32 @@ public class AnimalIO
         Integer age = this.getNumericInput();
 
         return new Student(age, name);
+    }
+
+    public Student genStudent(String pName, String pAge)
+    {
+        String inData;
+        String rName;
+        int rAge;
+        InputStream stdinHolder = System.in;
+
+        inData = pName;
+        try
+        {
+            System.setIn(new ByteArrayInputStream(inData.getBytes()));
+            rName = this.getStringInputFromSysIn();
+        }
+        finally { System.setIn(stdinHolder); }
+
+        inData = pAge;
+        try
+        {
+            System.setIn(new ByteArrayInputStream(inData.getBytes()));
+            rAge = this.getNumericInput();
+        }
+        finally { System.setIn(stdinHolder); }
+
+        return new Student(rAge, rName);
     }
 
     private String getStringInputFromSysIn()
