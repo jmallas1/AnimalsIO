@@ -23,7 +23,7 @@ class AnimalIOTest {
     @Test
     void genCat()
     {
-        Cat someCat = aio.genCat("Felix", "3");
+        Cat someCat = aio.addCat("Felix", "3");
         assertNotNull(someCat);
         assertEquals("Felix", someCat.getName(), "This cat should be named Felix");
         assertEquals(3, someCat.getMousesKilled(), "There should be three dead mice");
@@ -32,7 +32,7 @@ class AnimalIOTest {
     @Test
     void genDog()
     {
-        Dog someDog = aio.genDog("Trooper", "true");
+        Dog someDog = aio.addDog("Trooper", "true");
         assertNotNull(someDog);
         assertEquals("Trooper", someDog.getName(), "This dog should be named Trooper");
         assertTrue(someDog.isFriendly());
@@ -41,7 +41,7 @@ class AnimalIOTest {
     @Test
     void genStudent()
     {
-        Student someStudent = aio.genStudent("Jared", "42");
+        Student someStudent = aio.addStudent("Jared", "42");
         assertNotNull(someStudent);
         assertEquals(42, someStudent.getAge());
         assertEquals("Jared", someStudent.getName(), "This student should be named Jared");

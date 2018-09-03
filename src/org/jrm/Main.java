@@ -13,9 +13,9 @@ public class Main {
 
         ArrayList<Talkable> zoo = new ArrayList<>();
 
-        zoo.add(aio.genCat());
-        zoo.add(aio.genDog());
-        zoo.add(aio.genStudent());
+        zoo.add(aio.addCat());
+        zoo.add(aio.addDog());
+        zoo.add(aio.addStudent());
 
         /* Lines to Replace
         zoo.add(new Dog(true, "Pete"));

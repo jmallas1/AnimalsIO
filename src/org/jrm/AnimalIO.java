@@ -11,7 +11,7 @@ public class AnimalIO
 
     public AnimalIO() { }
 
-    Cat genCat()
+    Cat addCat()
     {
         System.out.println("You're building a cat... What is the cat's name?");
         String name = this.getStringInputFromSysIn();
@@ -27,7 +27,7 @@ public class AnimalIO
         return new Cat(victims, name);
     }
 
-    public Cat genCat(String pName, String pVictims)
+    public Cat addCat(String pName, String pVictims)
     {
         String inData;
         String rName;
@@ -56,7 +56,7 @@ public class AnimalIO
         return new Cat(rVictims, rName);
     }
 
-    Dog genDog()
+    Dog addDog()
     {
         System.out.println("You're building a dog... What is the dog's name?");
         String name = this.getStringInputFromSysIn();
@@ -67,7 +67,7 @@ public class AnimalIO
         return new Dog(kind, name);
     }
 
-    public Dog genDog(String pName, String pKind)
+    public Dog addDog(String pName, String pKind)
     {
         String inData;
         String rName;
@@ -93,7 +93,7 @@ public class AnimalIO
         return new Dog(rKind, rName);
     }
 
-    Student genStudent()
+    Student addStudent()
     {
         System.out.println("You're building a student... What is the student's name?");
         String name = this.getStringInputFromSysIn();
@@ -104,7 +104,7 @@ public class AnimalIO
         return new Student(age, name);
     }
 
-    public Student genStudent(String pName, String pAge)
+    public Student addStudent(String pName, String pAge)
     {
         String inData;
         String rName;
