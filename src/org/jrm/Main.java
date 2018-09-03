@@ -61,9 +61,10 @@ public class Main {
         }
         outFile.fileClose();
 
+        /*
         System.out.println(inFile.fileReadLine());
 
-        /* inFile.fileRead();
+        inFile.fileRead();
         inFile.fileClose();
         FileInput indata = new FileInput("animals.txt");
         String line;
@@ -71,7 +72,8 @@ public class Main {
         while ((line = indata.fileReadLine()) != null)
         {
             System.out.println(line);
-        } */
+        }
+        */
     }
 
     public static void printOut(Talkable p)

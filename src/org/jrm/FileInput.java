@@ -38,7 +38,7 @@ public class FileInput {
                 System.out.println(line);
             }
         } catch (Exception e) {
-            System.out.println("File Write Error: " + fileName + " " + e);
+            System.out.println("File Read Error: " + fileName + " " + e);
         }
     }
 
@@ -51,7 +51,7 @@ public class FileInput {
             String line = in.readLine();
             return line;
         } catch (Exception e) {
-            System.out.println("File Write Error: " + fileName + " " + e);
+            System.out.println("File Read Error: " + fileName + " " + e);
             return null;
         }
     }

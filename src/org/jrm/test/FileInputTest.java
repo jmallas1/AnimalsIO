@@ -13,27 +13,23 @@ class FileInputTest {
     FileInput fi;
 
     @BeforeEach
-    void setUp() { fi = new FileInput("./src/org/jrm/FileInputTest.java"); }
+    void setUp() { fi = new FileInput("./src/org/jrm/test/FileInputTest.java"); }
 
     @AfterEach
     void tearDown() { fi.fileClose(); fi = null; }
 
-    // TODO: This test
-    @DisplayName("Known file can be read")
-    @Test
-    void fileRead()
-    {
-    }
 
     // TODO: This test
     @DisplayName("Known line can be read")
     @Test
-    void fileReadLine() {
+    void fileReadLine()
+    {
+        // Happy path...
+        assertEquals("package org.jrm.test;", fi.fileReadLine());
+
+        // Unhappy path
+        fi = new FileInput("./src/org/jrm/FileInputTst.java");
+        assertNull(fi.fileReadLine());
     }
 
-    // TODO: This test
-    @DisplayName("File / filehandle can be closed")
-    @Test
-    void fileClose() {
-    }
 }
