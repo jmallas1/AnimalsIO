@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-// TODO: Write & address anti-cases
+// DONE: Write & address anti-cases
 class AnimalIOTest {
 
     private AnimalIO aio;
@@ -23,27 +23,33 @@ class AnimalIOTest {
     @Test
     void genCat()
     {
-        Cat someCat = aio.genCat("Felix", "3");
+        Cat someCat = aio.addCat("Felix", "3");
         assertNotNull(someCat);
         assertEquals("Felix", someCat.getName(), "This cat should be named Felix");
         assertEquals(3, someCat.getMousesKilled(), "There should be three dead mice");
+
+        assertThrows(IllegalArgumentException.class, ()->{ aio.addCat("F3lix", "3"); }, "Should throw exception on non-alpha name");
     }
 
     @Test
     void genDog()
     {
-        Dog someDog = aio.genDog("Trooper", "true");
+        Dog someDog = aio.addDog("Trooper", "true");
         assertNotNull(someDog);
         assertEquals("Trooper", someDog.getName(), "This dog should be named Trooper");
         assertTrue(someDog.isFriendly());
+
+        assertThrows(IllegalArgumentException.class, ()-> { aio.addDog("Tr00p3r", "true"); });
     }
 
     @Test
     void genStudent()
     {
-        Student someStudent = aio.genStudent("Jared", "42");
+        Student someStudent = aio.addStudent("Jared", "42");
         assertNotNull(someStudent);
         assertEquals(42, someStudent.getAge());
         assertEquals("Jared", someStudent.getName(), "This student should be named Jared");
+
+        assertThrows(IllegalArgumentException.class, ()-> { aio.addStudent("Jar3d", "42"); });
     }
 }

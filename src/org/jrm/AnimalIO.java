@@ -11,10 +11,19 @@ public class AnimalIO
 
     public AnimalIO() { }
 
-    Cat genCat()
+    Cat addCat() throws IllegalArgumentException
     {
+        String name;
+
         System.out.println("You're building a cat... What is the cat's name?");
-        String name = this.getStringInputFromSysIn();
+        try
+        {
+            name = this.getStringInputFromSysIn();
+        }
+        catch (IllegalArgumentException e)
+        {
+            throw e;
+        }
 
         System.out.println("How many mice has this cat killed?");
         Integer victims = this.getNumericInput();
@@ -27,7 +36,7 @@ public class AnimalIO
         return new Cat(victims, name);
     }
 
-    public Cat genCat(String pName, String pVictims)
+    public Cat addCat(String pName, String pVictims) throws IllegalArgumentException
     {
         String inData;
         String rName;
@@ -39,6 +48,10 @@ public class AnimalIO
         {
             System.setIn(new ByteArrayInputStream(inData.getBytes()));
             rName = this.getStringInputFromSysIn();
+        }
+        catch (IllegalArgumentException e)
+        {
+            throw e;
         }
         finally
         {
@@ -56,10 +69,18 @@ public class AnimalIO
         return new Cat(rVictims, rName);
     }
 
-    Dog genDog()
+    Dog addDog() throws IllegalArgumentException
     {
+        String name;
         System.out.println("You're building a dog... What is the dog's name?");
-        String name = this.getStringInputFromSysIn();
+        try
+        {
+            name = this.getStringInputFromSysIn();
+        }
+        catch (IllegalArgumentException e)
+        {
+            throw e;
+        }
 
         System.out.println("True or false, this dog is friendly:");
         Boolean kind = this.getBoolInputFromSysIn();
@@ -67,7 +88,7 @@ public class AnimalIO
         return new Dog(kind, name);
     }
 
-    public Dog genDog(String pName, String pKind)
+    public Dog addDog(String pName, String pKind) throws IllegalArgumentException
     {
         String inData;
         String rName;
@@ -79,6 +100,10 @@ public class AnimalIO
         {
             System.setIn(new ByteArrayInputStream(inData.getBytes()));
             rName = this.getStringInputFromSysIn();
+        }
+        catch (IllegalArgumentException e)
+        {
+            throw e;
         }
         finally { System.setIn(stdinHolder); }
 
@@ -93,10 +118,19 @@ public class AnimalIO
         return new Dog(rKind, rName);
     }
 
-    Student genStudent()
+    Student addStudent() throws IllegalArgumentException
     {
+        String name;
+
         System.out.println("You're building a student... What is the student's name?");
-        String name = this.getStringInputFromSysIn();
+        try
+        {
+            name = this.getStringInputFromSysIn();
+        }
+        catch (IllegalArgumentException e)
+        {
+            throw e;
+        }
 
         System.out.println("How old is this student?");
         Integer age = this.getNumericInput();
@@ -104,7 +138,7 @@ public class AnimalIO
         return new Student(age, name);
     }
 
-    public Student genStudent(String pName, String pAge)
+    public Student addStudent(String pName, String pAge) throws IllegalArgumentException
     {
         String inData;
         String rName;
@@ -116,6 +150,10 @@ public class AnimalIO
         {
             System.setIn(new ByteArrayInputStream(inData.getBytes()));
             rName = this.getStringInputFromSysIn();
+        }
+        catch (IllegalArgumentException e)
+        {
+            throw e;
         }
         finally { System.setIn(stdinHolder); }
 
@@ -130,7 +168,7 @@ public class AnimalIO
         return new Student(rAge, rName);
     }
 
-    private String getStringInputFromSysIn()
+    private String getStringInputFromSysIn() throws IllegalArgumentException
     {
         String returnString = "";
         try
@@ -140,9 +178,11 @@ public class AnimalIO
 
             returnString = br.readLine();
 
-            // Why did closing isr force my other IO function to
-            // go freaky AF?
-            // isr.close();
+            if (!isAlphaOnly(returnString))
+            {
+                throw new IllegalArgumentException("Input may only be alpha or whitespace characters");
+            }
+
         }
         catch (IOException e)
         {
@@ -199,5 +239,21 @@ public class AnimalIO
         }
 
         return false;
+    }
+
+    private Boolean isAlphaOnly(String someString)
+    {
+        Boolean rBool = true;
+        Character someChar;
+
+        for (int i = 0; i < someString.length(); i++)
+        {
+            someChar = someString.charAt(i);
+            if(!someChar.toString().matches("[a-zA-Z ]"))
+            {
+                rBool = false;
+            }
+        }
+        return rBool;
     }
 }

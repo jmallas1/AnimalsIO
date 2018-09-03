@@ -11,24 +11,59 @@ public class Main {
 
         AnimalIO aio = new AnimalIO();
 
+        Boolean notDone = true;
+
         ArrayList<Talkable> zoo = new ArrayList<>();
 
-        zoo.add(aio.genCat());
-        zoo.add(aio.genDog());
-        zoo.add(aio.genStudent());
-
-        /* Lines to Replace
-        zoo.add(new Dog(true, "Pete"));
-        zoo.add(new Cat(9, "Anne Belly"));
-        zoo.add(new Student(19, "Joe John Johnson"));
-        End Lines to Replace */
-
-        for (Talkable thing: zoo)
+        while (notDone)
         {
-            printOut(thing);
+            try
+            { zoo.add(aio.addCat()); notDone = false; }
+            catch (IllegalArgumentException e)
+            {
+                System.out.println("Exception caught!");
+                System.out.println(e);
+            }
+
+        }
+        notDone = true;
+
+        while (notDone)
+        {
+            try { zoo.add(aio.addDog()); notDone = false; }
+            catch (IllegalArgumentException e)
+            {
+                System.out.println("Exception caught!");
+                System.out.println(e);
+            }
+        }
+        notDone = true;
+
+        while (notDone)
+        {
+            try { zoo.add(aio.addStudent()); notDone = false; }
+            catch (IllegalArgumentException e)
+            {
+                System.out.println("Exception caught!");
+                System.out.println(e);
+            }
         }
 
+        /* for (Talkable thing: zoo)
+        {
+            printOut(thing);
+        } */
+
+
+        for (Talkable thing : zoo)
+        {
+            outFile.fileWrite(thing.getName() + "|" + thing.talk());
+        }
         outFile.fileClose();
+
+        /*
+        System.out.println(inFile.fileReadLine());
+
         inFile.fileRead();
         inFile.fileClose();
         FileInput indata = new FileInput("animals.txt");
@@ -38,6 +73,7 @@ public class Main {
         {
             System.out.println(line);
         }
+        */
     }
 
     public static void printOut(Talkable p)
