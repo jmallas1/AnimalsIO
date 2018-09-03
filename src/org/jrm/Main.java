@@ -49,13 +49,21 @@ public class Main {
             }
         }
 
-        for (Talkable thing: zoo)
+        /* for (Talkable thing: zoo)
         {
             printOut(thing);
-        }
+        } */
 
+
+        for (Talkable thing : zoo)
+        {
+            outFile.fileWrite(thing.getName() + "|" + thing.talk());
+        }
         outFile.fileClose();
-        inFile.fileRead();
+
+        System.out.println(inFile.fileReadLine());
+
+        /* inFile.fileRead();
         inFile.fileClose();
         FileInput indata = new FileInput("animals.txt");
         String line;
@@ -63,7 +71,7 @@ public class Main {
         while ((line = indata.fileReadLine()) != null)
         {
             System.out.println(line);
-        }
+        } */
     }
 
     public static void printOut(Talkable p)
