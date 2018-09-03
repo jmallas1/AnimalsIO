@@ -243,7 +243,7 @@ public class AnimalIO
 
     private Boolean isAlphaOnly(String someString)
     {
-        private Boolean rBool = true;
+        Boolean rBool = true;
         Character someChar;
 
         for (int i = 0; i < someString.length(); i++)

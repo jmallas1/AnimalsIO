@@ -11,17 +11,43 @@ public class Main {
 
         AnimalIO aio = new AnimalIO();
 
+        Boolean notDone = true;
+
         ArrayList<Talkable> zoo = new ArrayList<>();
 
-        zoo.add(aio.addCat());
-        zoo.add(aio.addDog());
-        zoo.add(aio.addStudent());
+        while (notDone)
+        {
+            try
+            { zoo.add(aio.addCat()); notDone = false; }
+            catch (IllegalArgumentException e)
+            {
+                System.out.println("Exception caught!");
+                System.out.println(e);
+            }
 
-        /* Lines to Replace
-        zoo.add(new Dog(true, "Pete"));
-        zoo.add(new Cat(9, "Anne Belly"));
-        zoo.add(new Student(19, "Joe John Johnson"));
-        End Lines to Replace */
+        }
+        notDone = true;
+
+        while (notDone)
+        {
+            try { zoo.add(aio.addDog()); notDone = false; }
+            catch (IllegalArgumentException e)
+            {
+                System.out.println("Exception caught!");
+                System.out.println(e);
+            }
+        }
+        notDone = true;
+
+        while (notDone)
+        {
+            try { zoo.add(aio.addStudent()); notDone = false; }
+            catch (IllegalArgumentException e)
+            {
+                System.out.println("Exception caught!");
+                System.out.println(e);
+            }
+        }
 
         for (Talkable thing: zoo)
         {
